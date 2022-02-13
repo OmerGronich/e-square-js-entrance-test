@@ -5,7 +5,7 @@ const googleBooksController = {
   async requestBooks(params) {
     const url = this.baseUrl;
 
-    for (param in params) {
+    for (const param in params) {
       url.searchParams.append(param, params[param]);
     }
 
