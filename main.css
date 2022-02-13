@@ -1,0 +1,258 @@
+@import "./reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@200;400;700&display=swap");
+
+:root {
+  --ff-spartan: "Spartan", sans-serif;
+  --clr-bg: #ffaca3;
+  --clr-bg-dark: #050505;
+  --clr-card-bg: #f7f6f9;
+  --clr-placeholder: #3f3f3f;
+  --clr-text: #0a0a0a;
+  --gradient-one: #dae2f8;
+  --gradient-two: #d6a4a4;
+  --border: 0.5rem solid rgba(0, 0, 0, 0.1);
+}
+
+html {
+  font-size: 6.25%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 12rem;
+  font-family: var(--ff-spartan);
+  background-color: var(--clr-bg);
+}
+
+.card {
+  background-color: var(--clr-card-bg);
+  padding: 10rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rem;
+  margin-bottom: 32rem;
+  border-radius: 20rem;
+  background: var(--clr-bg-dark);
+  color: #fff;
+}
+
+.card header nav ul {
+  display: flex;
+}
+
+.card header nav ul li {
+  margin-right: 2rem;
+}
+
+.card header nav ul li:hover {
+  opacity: 0.8;
+}
+
+.title {
+  background: var(--gradient-one);
+  background: -webkit-linear-gradient(
+    to right,
+    var(--gradient-one),
+    var(--gradient-two)
+  );
+  background: linear-gradient(
+    to right,
+    var(--gradient-two),
+    var(--gradient-one)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.github img {
+  width: 32rem;
+}
+
+.books-list {
+  flex: 1;
+}
+
+footer {
+  opacity: 0.5;
+  font-style: italic;
+  font-size: 12rem;
+}
+cite a {
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+.input-group {
+  flex: 1;
+  margin-right: 10rem;
+  position: relative;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 10rem;
+  transition: transform 200ms, opacity 200ms, top 200ms;
+  opacity: 0.5;
+  transform: translateY(-50%);
+  color: var(--clr-placeholder);
+}
+
+.input-group .search-books-input:focus + label,
+.input-group .search-books-input:valid + label {
+  top: -5rem;
+  font-size: 75%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+}
+
+.search-books-input {
+  background: #fff;
+  padding: 10rem 20rem;
+  width: 100%;
+  border-radius: 12rem;
+  border: var(--border);
+}
+
+.submit-button {
+  padding: 5rem 10rem;
+  display: flex;
+  align-items: center;
+  border: var(--border);
+  border-radius: 12rem;
+  color: #fff;
+  background: var(--clr-bg);
+  cursor: pointer;
+}
+.search-icon {
+  opacity: 0.5;
+  margin-left: 5rem;
+}
+
+.books-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10rem;
+  margin: 32rem 0;
+}
+
+.book-item {
+  background: #fff;
+  border-radius: 12rem;
+  padding: 20rem;
+  border: var(--border);
+  display: flex;
+  gap: 20rem;
+}
+
+.book-item__image {
+  min-width: 90rem;
+}
+
+.book-item__image img {
+  border-radius: 10rem;
+}
+
+.book-item__info {
+  display: flex;
+  flex-direction: column;
+  max-height: 150rem;
+}
+
+.book-item__title {
+  font-weight: bold;
+  letter-spacing: 1rem;
+  margin: 10rem 0;
+  color: var(--clr-text);
+}
+
+.book-item__description {
+  overflow: auto;
+  flex: 1;
+}
+
+/*480px*/
+@media only screen and (min-width: 37.5em) {
+  body {
+    font-size: 14rem;
+    padding: 20rem;
+  }
+
+  .books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(100% / 2 - 20px), 1fr));
+    grid-gap: 10rem;
+    margin: 32rem 0;
+  }
+
+  .card {
+    border-radius: 10rem 10rem 0 0;
+    padding: 20rem;
+  }
+}
+
+/*769px*/
+@media only screen and (min-width: 48em) {
+  body {
+    font-size: 14rem;
+    padding: 42rem 42rem 0 42rem;
+  }
+
+  .books-list {
+    grid-template-columns: repeat(auto-fit, minmax(calc(100% / 2 - 20px), 1fr));
+    grid-gap: 10rem;
+    margin: 32rem 0;
+  }
+
+  .card {
+    padding: 32rem;
+  }
+
+  form {
+    width: 60%;
+  }
+}
+
+.book-item__placeholder-text {
+  opacity: 0.5;
+}
+
+@media only screen and (min-width: 69em) {
+  .books-list {
+    grid-template-columns: repeat(auto-fit, minmax(calc(100% / 3 - 20px), 1fr));
+  }
+}
+
+.loading {
+  margin-top: auto;
+  display: inline-block;
+  width: 15rem;
+  height: 15rem;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: #333;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
