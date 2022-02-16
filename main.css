@@ -190,6 +190,7 @@ form {
   letter-spacing: 0.1rem;
   margin: 1rem 0;
   color: var(--clr-text);
+  min-height: 2rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
