@@ -23,7 +23,7 @@ body {
 }
 
 body {
-  font-size: 12rem;
+  font-size: 10rem;
   font-family: var(--ff-spartan);
   background-color: var(--clr-bg);
 }
@@ -189,8 +189,12 @@ form {
 
 /*480px*/
 @media only screen and (min-width: 37.5em) {
+  html {
+    -webkit-text-size-adjust: none;
+  }
+
   body {
-    font-size: 14rem;
+    font-size: 12rem;
     padding: 20rem;
   }
 
@@ -234,6 +238,9 @@ form {
 }
 
 @media only screen and (min-width: 69em) {
+  body {
+    font-size: 16rem;
+  }
   .books-list {
     grid-template-columns: repeat(auto-fit, minmax(calc(100% / 3 - 20px), 1fr));
   }

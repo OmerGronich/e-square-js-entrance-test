@@ -53,12 +53,15 @@ class UiController {
     return `<span class="book-item__placeholder-text">${text}</span>`;
   }
 
-  showLoader() {
-    uiController.searchIcon.innerHTML = `<div class="loading"></div>`;
-  }
-
-  hideLoader() {
-    uiController.searchIcon.innerHTML = `&#128269;`;
+  createLoader({ previousInnerHtml, htmlElement }) {
+    return {
+      showLoader() {
+        htmlElement.innerHTML = `<div class="loading"></div>`;
+      },
+      hideLoader() {
+        htmlElement.innerHTML = previousInnerHtml;
+      },
+    };
   }
 }
 
@@ -69,6 +72,11 @@ const uiController = new UiController({
   form: "[data-search-books-form]",
 });
 
+const searchButtonLoader = uiController.createLoader({
+  htmlElement: uiController.searchIcon,
+  previousInnerHtml: `&#128269;`,
+});
+
 const searchHandler = async (event) => {
   event.preventDefault();
   const q = uiController.searchInput.value;
@@ -76,11 +84,11 @@ const searchHandler = async (event) => {
   if (!q) return;
 
   try {
-    uiController.showLoader();
+    searchButtonLoader.showLoader();
     const { items: books } = await googleBooksController.requestBooks({
       q,
     });
-    uiController.hideLoader();
+    searchButtonLoader.hideLoader();
     uiController.renderBooks(books);
   } catch (e) {
     console.error({ e });
