@@ -1,3 +1,5 @@
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const googleBooksController = {
   get baseUrl() {
     return new URL("https://www.googleapis.com/books/v1/volumes");
@@ -65,6 +67,20 @@ class UiController {
       },
     };
   }
+
+  showToast({ text, color, hideAfter = 3000 }) {
+    const toast = document.createElement("div");
+    toast.classList.add("toast");
+    toast.classList.add(color);
+    toast.innerHTML = `<span>${text}</span>`;
+    this.toastContainer.appendChild(toast);
+
+    setTimeout(async () => {
+      toast.classList.add("hide");
+      await sleep(1000);
+      toast.remove();
+    }, hideAfter);
+  }
 }
 
 const uiController = new UiController({
@@ -72,6 +88,7 @@ const uiController = new UiController({
   booksList: "[data-books-list]",
   searchIcon: "[data-search-icon]",
   form: "[data-search-books-form]",
+  toastContainer: "[data-toast-container]",
 });
 
 const searchButtonLoader = uiController.createLoader({
@@ -92,6 +109,11 @@ const searchHandler = async (event) => {
     searchButtonLoader.hideLoader();
     uiController.renderBooks(books);
   } catch (e) {
+    searchButtonLoader.hideLoader();
+    uiController.showToast({
+      text: "Something went wrong",
+      color: "danger",
+    });
     console.error({ e });
   }
 };

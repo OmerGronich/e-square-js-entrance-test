@@ -201,6 +201,55 @@ form {
   flex: 1;
 }
 
+.loading {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: #333;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+.toast {
+  position: relative;
+  width: 25rem;
+  height: 4rem;
+  border-radius: 1rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+
+  transition: opacity 0.5s ease-in-out;
+}
+
+.toast-container:empty {
+  opacity: 0;
+  z-index: -1;
+}
+
+.toast.danger {
+  color: #dc3545;
+}
+
+.toast.hide {
+  opacity: 0;
+}
+
 @media only screen and (min-width: 480px) {
   html {
     -webkit-text-size-adjust: none;
@@ -256,19 +305,6 @@ form {
   .books-list {
     grid-template-columns: repeat(auto-fit, minmax(calc(100% / 3 - 20px), 1fr));
   }
-}
-
-.loading {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  min-width: 1.5rem;
-  min-height: 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  border-top-color: #333;
-  animation: spin 1s ease-in-out infinite;
-  -webkit-animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {
