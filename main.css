@@ -175,6 +175,7 @@ form {
   display: flex;
   flex-direction: column;
   max-height: 15rem;
+  overflow: hidden;
 }
 
 .book-item__title {
@@ -182,6 +183,9 @@ form {
   letter-spacing: 1rem;
   margin: 1rem 0;
   color: var(--clr-text);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .book-item__description {
