@@ -53,13 +53,15 @@ class UiController {
     return `<span class="book-item__placeholder-text">${text}</span>`;
   }
 
-  createLoader({ previousInnerHtml, htmlElement }) {
+  createLoader({ element }) {
+    const previousHtml = element.innerHTML;
+
     return {
       showLoader() {
-        htmlElement.innerHTML = `<div class="loading"></div>`;
+        element.innerHTML = `<div class="loading"></div>`;
       },
       hideLoader() {
-        htmlElement.innerHTML = previousInnerHtml;
+        element.innerHTML = previousHtml;
       },
     };
   }
@@ -73,8 +75,7 @@ const uiController = new UiController({
 });
 
 const searchButtonLoader = uiController.createLoader({
-  htmlElement: uiController.searchIcon,
-  previousInnerHtml: `&#128269;`,
+  element: uiController.searchIcon,
 });
 
 const searchHandler = async (event) => {
