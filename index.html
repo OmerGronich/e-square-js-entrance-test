@@ -28,26 +28,29 @@
           </ul>
         </nav>
       </header>
-      <form data-search-books-form>
-        <div class="input-group">
-          <input
-            name="q"
-            id="search-books-input"
-            data-search-input
-            type="search"
-            class="search-books-input"
-            required
-          />
-          <label for="search-books-input" class="search-books-label"
-            >Search Books</label
-          >
-        </div>
-        <button class="submit-button" type="submit">
-          Search
-          <div class="search-icon" data-search-icon>&#128269;</div>
-        </button>
-      </form>
-      <ul class="books-list" data-books-list></ul>
+      <section class="search-section">
+        <form data-search-books-form>
+          <div class="input-group">
+            <input
+              name="q"
+              id="search-books-input"
+              data-search-input
+              type="search"
+              class="search-books-input"
+              required
+            />
+            <label for="search-books-input" class="search-books-label"
+              >Search Books</label
+            >
+          </div>
+          <button class="submit-button" type="submit">
+            Search
+            <span class="search-icon" data-search-icon>&#128269;</span>
+          </button>
+        </form>
+        <ul class="books-list" data-books-list></ul>
+      </section>
+
       <footer>
         Design inspired by Ebin Anto:
         <cite>

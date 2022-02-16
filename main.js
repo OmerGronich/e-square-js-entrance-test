@@ -30,7 +30,7 @@ class UiController {
   }
 
   renderBook(book) {
-    return `<li class="book-item">
+    return `<li class="book-item" role="article">
         <div class="book-item__image">
           <img src="${book.volumeInfo?.imageLinks?.thumbnail}" alt="${
       book?.volumeInfo?.title || ""
